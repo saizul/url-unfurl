@@ -1,0 +1,80 @@
+{
+  "name": "@saizul/url-unfurl",
+  "version": "0.1.0",
+  "description": "Fetch a URL and get link-preview metadata like Slack and Discord show: title, description, image, favicon, Open Graph, Twitter cards, oEmbed and JSON-LD. SSRF-safe by default, with timeouts, byte limits and charset handling. Zero runtime dependencies.",
+  "keywords": [
+    "unfurl",
+    "link-preview",
+    "open-graph",
+    "opengraph",
+    "twitter-card",
+    "oembed",
+    "json-ld",
+    "metadata",
+    "favicon",
+    "ssrf",
+    "scraper",
+    "cli"
+  ],
+  "author": "Saizul Amin (https://github.com/saizul)",
+  "license": "MIT",
+  "homepage": "https://github.com/saizul/url-unfurl#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saizul/url-unfurl.git"
+  },
+  "bugs": {
+    "url": "https://github.com/saizul/url-unfurl/issues"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "bin": {
+    "url-unfurl": "./dist/esm/cli.js"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist/esm",
+    "dist/cjs",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "build": "npm run clean && tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json && node scripts/write-cjs-package.mjs",
+    "build:test": "tsc -p tsconfig.test.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "biome lint src test scripts examples && npm run typecheck",
+    "format": "biome format --write src test scripts examples",
+    "format:check": "biome format src test scripts examples",
+    "test": "npm run build && npm run build:test && node scripts/run-tests.mjs",
+    "test:only": "node scripts/run-tests.mjs",
+    "prepublishOnly": "npm test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.7",
+    "@types/node": "^20.19.0",
+    "typescript": "^5.7.0"
+  }
+}

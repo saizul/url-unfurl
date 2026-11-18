@@ -1,0 +1,22 @@
+<!-- <meta property="og:title" content="from a comment"> -->
+<html>
+<head>
+<?xml-stylesheet nothing ?>
+<style>a::after { content: "<meta property='og:title' content='from css'>"; }</style>
+<meta property="og:title" content=" First   wins ">
+<meta property="og:title" content="Second">
+<meta content="Reversed attributes" name="description">
+<meta name="description" content="Second description">
+<meta property="og:image:width" content="300">
+<meta property="og:image" content="data:image/png;base64,AAAA">
+<meta property="og:image" content="//protocol-relative.example/i.png">
+<meta property="og:image" content="//protocol-relative.example/i.png">
+<link rel="canonical" href="ftp://example.com/nope">
+<meta name=empty content="">
+<meta property=og:audio content=/a.mp3>
+<meta name="theme-color" content="#abcdef">
+<meta http-equiv="content-language" content="de-AT, en">
+<textarea><link rel="canonical" href="https://wrong.example/"></textarea>
+<script type="application/ld+json">{ not valid json </script>
+<script type="application/ld+json"><!-- {"@type": "Recipe", "name": "Pancakes", "author": {"@type":"Person","name":"Chef"}} --></script>
+<meta name="unterminated" content="no end

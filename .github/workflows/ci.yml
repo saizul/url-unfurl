@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint and typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run format:check
+
+  test:
+    name: Node ${{ matrix.node }} on ${{ matrix.os }}
+    needs: lint
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        node: [20, 22, 24]
+        include:
+          - os: windows-latest
+            node: 22
+          - os: macos-latest
+            node: 22
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      - run: npm ci
+      # The tests are offline: fixtures, a local node:http server and a fake DNS resolver.
+      - run: npm test
+      - name: Run the examples against the build
+        run: |
+          node examples/basic.mjs
+          node examples/commonjs.cjs
+      - name: Smoke-test the CLI
+        run: |
+          node dist/esm/cli.js --version
+          node dist/esm/cli.js --help
+          node dist/esm/cli.js --file test/fixtures/article.html --base https://news.example.com/a
+          node dist/esm/cli.js --file test/fixtures/video.html --base https://videosite.example/watch --json
+      - name: The CLI refuses private addresses
+        shell: bash
+        run: |
+          set +e
+          node dist/esm/cli.js http://169.254.169.254/latest/meta-data/
+          test $? -eq 1
+      - name: Check the packed package
+        run: npm pack --dry-run

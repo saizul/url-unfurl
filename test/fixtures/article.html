@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-GB" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <title>Fallback title | Example News</title>
+  <meta name="description" content="Plain meta description.">
+  <meta name="author" content="Ada Example">
+  <meta name="keywords" content="space, rockets , launch">
+  <meta name="theme-color" content="#111111" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <link rel="canonical" href="/news/2026/rocket-launch">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Rocket launch &amp; landing &mdash; a first">
+  <meta property="og:description" content="The booster landed on its second try.">
+  <meta property="og:site_name" content="Example News">
+  <meta property="og:url" content="https://news.example.com/news/2026/rocket-launch?utm=x">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:image" content="https://cdn.example.com/rocket.jpg">
+  <meta property="og:image:secure_url" content="https://secure.example.com/rocket.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A rocket on the pad">
+  <meta property="og:image" content="/images/second.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="article:published_time" content="2026-11-01T08:00:00Z">
+  <meta property="article:author" content="https://news.example.com/staff/ada">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@examplenews">
+  <meta name="twitter:creator" content="@ada">
+  <meta name="twitter:title" content="Twitter title">
+  <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="mask-icon" href="/mask.svg" color="#000">
+  <link rel="alternate" type="application/rss+xml" title="Example News RSS" href="/feed.xml">
+  <link rel="manifest" href="/site.webmanifest">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "WebSite", "@id": "https://news.example.com/#site", "name": "Example News" },
+      { "@type": "Organization", "@id": "https://news.example.com/#org", "name": "Example News Ltd" },
+      { "@type": "Person", "@id": "https://news.example.com/#ada", "name": "Ada Example" },
+      {
+        "@type": ["NewsArticle", "Article"],
+        "headline": "JSON-LD headline",
+        "datePublished": "2026-11-01T08:00:00Z",
+        "dateModified": "2026-11-02T09:30:00Z",
+        "author": [{ "@id": "https://news.example.com/#ada" }, { "@type": "Person", "name": "Grace Example" }],
+        "publisher": { "@id": "https://news.example.com/#org" },
+        "image": ["https://cdn.example.com/rocket-ld.jpg"]
+      }
+    ]
+  }
+  </script>
+  <script>
+    // Markup inside scripts must not be picked up.
+    document.write('<meta property="og:title" content="from a script">');
+  </script>
+</head>
+<body>
+  <svg><title>Icon title</title></svg>
+  <p>Body text.</p>
+</body>
+</html>

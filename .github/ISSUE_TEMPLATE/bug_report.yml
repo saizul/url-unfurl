@@ -1,0 +1,43 @@
+name: Bug report
+description: Something does not work as documented
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. Please do not paste private URLs, internal hostnames, cookies or tokens. A public URL or a small HTML snippet is ideal.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: The command or code you ran, and the output you got.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: repro
+    attributes:
+      label: Smallest reproduction
+      description: A public URL, or the smallest HTML snippet plus the base URL (`url-unfurl --file page.html --base ...`).
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: url-unfurl version
+      placeholder: '0.1.0'
+    validations:
+      required: true
+  - type: input
+    id: node
+    attributes:
+      label: Node version and OS
+      placeholder: 'Node 22.12, Ubuntu 24.04'
+    validations:
+      required: true
